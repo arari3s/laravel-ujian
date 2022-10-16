@@ -11,25 +11,23 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if (Auth::user()->roles == 'ADMIN')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
-                            {{ __('Dashboard') }}
-                        </x-jet-nav-link>
-                    </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
+                        {{ __('Dashboard') }}
+                    </x-jet-nav-link>
+                </div>
 
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('dashboard.user.index') }}" :active="request()->routeIs('dashboard.user.index')">
-                            {{ __('User') }}
-                        </x-jet-nav-link>
-                    </div>
-                @elseif(Auth::user()->roles == 'USER')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('dashboard.user.index') }}" :active="request()->routeIs('dashboard.user.index')">
-                            {{ __('User') }}
-                        </x-jet-nav-link>
-                    </div>
-                @endif
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('dashboard.user.index') }}" :active="request()->routeIs('dashboard.user.index')">
+                        {{ __('User') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('dashboard.courses.index') }}" :active="request()->routeIs('dashboard.courses.index')">
+                        {{ __('Course') }}
+                    </x-jet-nav-link>
+                </div>
 
             </div>
 

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Users') }}
+            {{ __('Courses') }}
         </h2>
     </x-slot>
 
@@ -18,16 +18,12 @@
                         width: '5%'
                     },
                     {
+                        data: 'title',
+                        name: 'title'
+                    },
+                    {
                         data: 'name',
                         name: 'name'
-                    },
-                    {
-                        data: 'email',
-                        name: 'email'
-                    },
-                    {
-                        data: 'roles',
-                        name: 'roles'
                     },
                     {
                         data: 'action',
@@ -44,12 +40,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            {{-- <div class="mb-10">
-                <a href="#"
-                    class="bg-orange-500 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded shadow-lg">
-                    Import User
+            <div class="mb-10">
+                <a href="{{ route('dashboard.courses.create') }}"
+                    class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg">
+                    Create Courses
                 </a>
-            </div> --}}
+            </div>
 
             <div class="shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 bg-white sm:p-6">
@@ -57,9 +53,8 @@
                         <thead class="text-left">
                             <tr>
                                 <th>ID</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>Judul</th>
+                                <th>Nama Mapel</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
