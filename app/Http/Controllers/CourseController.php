@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -56,9 +57,15 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
-        //
+        $data = $request->all();
+        Course::create($data);
+
+        // alert
+        alert()->success('Successfully Added', 'Course added successfully!');
+
+        return redirect()->route('dashboard.courses.index');
     }
 
     /**
