@@ -23,7 +23,7 @@ class CourseController extends Controller
                 ->addColumn('action', function ($item) {
                     return '
                         <a class="inline-block border border-sky-500 bg-sky-500 text-white rounded-md px-4 py-1 m-1 font-semibold transition duration-500 ease select-none hover:bg-sky-800 focus:outline-none focus:shadow-outline"
-                            href="' . route('dashboard.courses.index', $item->id) . '">
+                            href="' . route('dashboard.courses.edit', $item->id) . '">
                             Edit
                         </a>
 
@@ -87,7 +87,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('pages.course.edit', compact('course'));
     }
 
     /**
@@ -97,9 +97,15 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(CourseRequest $request, Course $course)
     {
-        //
+        $data = $request->all();
+        $course->update($data);
+
+        // alert
+        alert()->success('Successfully Updated', 'Course updated successfully!');
+
+        return redirect()->route('dashboard.courses.index');
     }
 
     /**
