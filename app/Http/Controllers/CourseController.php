@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 class CourseController extends Controller
@@ -60,6 +61,8 @@ class CourseController extends Controller
     public function store(CourseRequest $request)
     {
         $data = $request->all();
+        $data['users_id'] = Auth::user()->id;
+
         Course::create($data);
 
         // alert
@@ -100,6 +103,8 @@ class CourseController extends Controller
     public function update(CourseRequest $request, Course $course)
     {
         $data = $request->all();
+        $data['users_id'] = Auth::user()->id;
+
         $course->update($data);
 
         // alert

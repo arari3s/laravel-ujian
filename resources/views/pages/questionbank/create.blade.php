@@ -43,9 +43,28 @@
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Soal
                                 <span class="text-red-500">*</span></label>
-                            <textarea name="question" value="{{ old('question') }}"
-                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                cols="30" rows="10">
+                            <textarea name="question"
+                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Pilihan 1
+                                <span class="text-red-500">*</span></label>
+                            <textarea name="question"
+                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Pilihan 2
+                                <span class="text-red-500">*</span></label>
+                            <textarea name="question"
+                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                             </textarea>
                         </div>
                     </div>
@@ -66,9 +85,9 @@
         </div>
     </div>
 
-    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('question');
-    </script>
+    </script> --}}
 
 </x-app-layout>
