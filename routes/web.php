@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\QuestionBankController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,9 @@ Route::middleware(['auth:sanctum', 'verified'])
         Route::middleware(['admin'])->group(function () {
             // users
             Route::resource('user', UserController::class);
-
+            // courses
             Route::resource('courses', CourseController::class);
+            // question bank
+            Route::resource('questionbank', QuestionBankController::class);
         });
     });
