@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('question_banks', function (Blueprint $table) {
             $table->id();
 
             $table->bigInteger('users_id');
-            $table->string('title');
-            $table->string('name');
-            $table->bigInteger('is_active')->default(1);
+            $table->text('question');
 
             $table->softDeletes();
             $table->timestamps();
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('question_banks');
     }
 };

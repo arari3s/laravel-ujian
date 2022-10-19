@@ -27,7 +27,6 @@ class CourseRequest extends FormRequest
         return [
             'title' => 'required',
             'name' => 'required',
-            'details' => 'required',
         ];
     }
 }
