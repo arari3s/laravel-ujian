@@ -11,6 +11,11 @@ class Answer extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'question_banks_id', 'explanation', 'is_checked'
+        'question_banks_id', 'explanation'
     ];
+    // relationships one to many question bank to answer
+    public function qbank()
+    {
+        return $this->belongsTo(QuestionBank::class, 'question_banks_id', 'id');
+    }
 }
