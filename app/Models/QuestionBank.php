@@ -13,4 +13,10 @@ class QuestionBank extends Model
     protected $fillable = [
         'users_id', 'question'
     ];
+
+    // relationships one to many question bank to answer
+    public function answer()
+    {
+        return $this->hasMany(Answer::class, 'question_banks_id');
+    }
 }

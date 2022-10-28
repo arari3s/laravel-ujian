@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuestionBankRequest;
+use App\Models\Answer;
 use App\Models\QuestionBank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 class QuestionBankController extends Controller
@@ -56,9 +59,18 @@ class QuestionBankController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionBankRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['users_id'] = Auth::user()->id;
+
+        // add to questionBank
+        $questionbank = QuestionBank::create($data);
+
+        // add to answer
+        $status = $questionbank->answer()->createMany($data['answers'])->push();
+
+        return redirect()->route('dashboard.questionbank.index');
     }
 
     /**

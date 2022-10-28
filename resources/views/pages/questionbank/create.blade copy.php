@@ -42,25 +42,35 @@
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 1
                                 <span class="text-red-500">*</span></label>
-                            <input type="hidden" value="0" name="answers[0][is_checked]">
-                            <input type="checkbox" value="1" name="answers[0][is_checked]">
-                            <span class="min-w-full mx-auto px-5">
-                                <input name="answers[0][answer]" value="{{ old('answers.0.answer') }}" type="text"
-                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
-                            </span>
+                            <input type="text" name="answer[]" value="{{ old('answer[]') }}"
+                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+
+                            <div class="flex items-center mt-4">
+                                <input id="is_checked0" name="is_checked[]" type="checkbox" value="1"
+                                    {{ old('is_checked[]') ? 'checked="checked"' : '' }}
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="is_checked0"
+                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Jawaban
+                                    Benar</label>
+                            </div>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 1
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 2
                                 <span class="text-red-500">*</span></label>
-                            <input type="hidden" value="0" name="answers[1][is_checked]">
-                            <input type="checkbox" value="1" name="answers[1][is_checked]">
-                            <span class="min-w-full mx-auto px-5">
-                                <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text"
-                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
-                            </span>
+                            <input type="text" name="answer[]" value="{{ old('answer[]') }}"
+                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+
+                            <div class="flex items-center mt-4">
+                                <input id="is_checked1" name="is_checked[]" type="checkbox" value="1"
+                                    {{ old('is_checked[]') ? 'checked="checked"' : '' }}
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="is_checked1"
+                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Jawaban
+                                    Benar</label>
+                            </div>
                         </div>
                     </div>
 
