@@ -22,11 +22,15 @@
                         name: 'question'
                     },
                     {
+                        data: 'user.name',
+                        name: 'user.name'
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
                         searchable: false,
-                        width: '20%'
+                        width: '5%'
                     }
                 ]
             })
@@ -50,6 +54,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Soal</th>
+                                <th>Guru Mapel</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

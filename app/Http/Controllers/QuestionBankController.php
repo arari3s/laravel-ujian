@@ -19,7 +19,7 @@ class QuestionBankController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = QuestionBank::query();
+            $query = QuestionBank::with('user')->get();
 
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
@@ -28,15 +28,12 @@ class QuestionBankController extends Controller
                             href="' . route('dashboard.questionbank.edit', $item->id) . '">
                             Edit
                         </a>
-
-                        <form class="inline-block" action="' . route('dashboard.questionbank.destroy', $item->id) . '" method="POST">
-                            <button class="border border-red-500 bg-red-500 text-white rounded-md px-2 py-1 m-1 font-semibold transition duration-500 ease select-none hover:bg-red-800 focus:outline-none focus:shadow-outline" >
-                                Hapus
-                            </button>
-                            ' . method_field('delete') . csrf_field() . '
-                        </form>
                     ';
                 })
+                ->editColumn('question', function ($item) {
+                    return strip_tags($item->question);
+                })
+
                 ->rawColumns(['action'])
                 ->make();
         }
@@ -115,6 +112,6 @@ class QuestionBankController extends Controller
      */
     public function destroy(QuestionBank $questionBank)
     {
-        //
+        return abort(404);
     }
 }

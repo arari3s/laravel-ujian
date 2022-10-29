@@ -19,4 +19,9 @@ class QuestionBank extends Model
     {
         return $this->hasMany(Answer::class, 'question_banks_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
 }

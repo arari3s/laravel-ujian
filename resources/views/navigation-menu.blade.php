@@ -24,14 +24,14 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard.courses.index') }}" :active="request()->routeIs('dashboard.courses.index')">
-                        {{ __('Course') }}
+                    <x-jet-nav-link href="{{ route('dashboard.questionbank.index') }}" :active="request()->routeIs('dashboard.questionbank.index')">
+                        {{ __('Question Bank') }}
                     </x-jet-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard.questionbank.index') }}" :active="request()->routeIs('dashboard.questionbank.index')">
-                        {{ __('Question Bank') }}
+                    <x-jet-nav-link href="{{ route('dashboard.courses.index') }}" :active="request()->routeIs('dashboard.courses.index')">
+                        {{ __('Course') }}
                     </x-jet-nav-link>
                 </div>
 

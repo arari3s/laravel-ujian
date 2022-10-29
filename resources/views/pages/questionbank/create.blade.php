@@ -29,37 +29,129 @@
                 <form action="{{ route('dashboard.questionbank.store') }}" class="w-full" method="POST"
                     enctype="multipart/form-data">
                     @csrf
+                    {{-- soal --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Soal
                                 <span class="text-red-500">*</span></label>
-                            <input type="text" name="question" value="{{ old('question') }}"
-                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <textarea name="question" nput type="text" name="question" value="{{ old('question') }}"
+                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                cols="30" rows="10">
+                            </textarea>
                         </div>
                     </div>
 
+                    {{-- jawaban 1 --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 1
                                 <span class="text-red-500">*</span></label>
-                            <input type="hidden" value="0" name="answers[0][is_checked]">
-                            <input type="checkbox" value="1" name="answers[0][is_checked]">
+
+                            <input type="hidden" value="0" name="answers[0][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+                            <input type="checkbox" value="1" name="answers[0][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+
+                            <label for="is_checked" class="ml-2 text-sm font-medium text-gray-900">Jawaban Benar
+                            </label>
+
                             <span class="min-w-full mx-auto px-5">
-                                <input name="answers[0][answer]" value="{{ old('answers.0.answer') }}" type="text"
-                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                <textarea name="answers[0][answer]"
+                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                                    cols="30" rows="10">
+                                </textarea>
                             </span>
                         </div>
                     </div>
 
+                    {{-- jawaban 2 --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 1
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 2
                                 <span class="text-red-500">*</span></label>
-                            <input type="hidden" value="0" name="answers[1][is_checked]">
-                            <input type="checkbox" value="1" name="answers[1][is_checked]">
+
+                            <input type="hidden" value="0" name="answers[1][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+                            <input type="checkbox" value="1" name="answers[1][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+
+                            <label for="is_checked" class="ml-2 text-sm font-medium text-gray-900 ">Jawaban Benar
+                            </label>
+
                             <span class="min-w-full mx-auto px-5">
-                                <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text"
-                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                <textarea name="answers[1][answer]"
+                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                                    cols="30" rows="10">
+                                </textarea>
+                            </span>
+                        </div>
+                    </div>
+
+                    {{-- jawaban 3 --}}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 3
+                                <span class="text-red-500">*</span></label>
+
+                            <input type="hidden" value="0" name="answers[2][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+                            <input type="checkbox" value="1" name="answers[2][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+
+                            <label for="is_checked" class="ml-2 text-sm font-medium text-gray-900 ">Jawaban Benar
+                            </label>
+
+                            <span class="min-w-full mx-auto px-5">
+                                <textarea name="answers[2][answer]"
+                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                                    cols="30" rows="10">
+                                </textarea>
+                            </span>
+                        </div>
+                    </div>
+
+                    {{-- jawaban 4 --}}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 4
+                                <span class="text-red-500">*</span></label>
+
+                            <input type="hidden" value="0" name="answers[3][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+                            <input type="checkbox" value="1" name="answers[3][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+
+                            <label for="is_checked" class="ml-2 text-sm font-medium text-gray-900 ">Jawaban Benar
+                            </label>
+
+                            <span class="min-w-full mx-auto px-5">
+                                <textarea name="answers[3][answer]"
+                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                                    cols="30" rows="10">
+                                </textarea>
+                            </span>
+                        </div>
+                    </div>
+
+                    {{-- jawaban 5 --}}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Jawaban 5
+                                <span class="text-red-500">*</span></label>
+
+                            <input type="hidden" value="0" name="answers[4][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+                            <input type="checkbox" value="1" name="answers[4][is_checked]"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
+
+                            <label for="is_checked" class="ml-2 text-sm font-medium text-gray-900 ">Jawaban Benar
+                            </label>
+
+                            <span class="min-w-full mx-auto px-5">
+                                <textarea name="answers[4][answer]"
+                                    class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                                    cols="30" rows="10">
+                                </textarea>
                             </span>
                         </div>
                     </div>
@@ -80,9 +172,14 @@
         </div>
     </div>
 
-    {{-- <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('question');
-    </script> --}}
+        CKEDITOR.replace('answers[0][answer]');
+        CKEDITOR.replace('answers[1][answer]');
+        CKEDITOR.replace('answers[2][answer]');
+        CKEDITOR.replace('answers[3][answer]');
+        CKEDITOR.replace('answers[4][answer]');
+    </script>
 
 </x-app-layout>

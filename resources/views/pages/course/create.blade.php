@@ -35,7 +35,7 @@
                                 <span class="text-red-500">*</span></label>
                             <input value="{{ old('title') }}" name="title"
                                 class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                type="text" placeholder="Nama Ujian">
+                                type="text" placeholder="PTS Dasar DKV 4 - FOTOGRAFI">
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                                 <span class="text-red-500">*</span></label>
                             <input value="{{ old('name') }}" name="name"
                                 class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                type="text" placeholder="Nama Mapel">
+                                type="text" placeholder="Dasar DKV 4 - FOTOGRAFI">
                         </div>
                     </div>
 
