@@ -28,6 +28,11 @@ class QuestionBankController extends Controller
                             href="' . route('dashboard.questionbank.edit', $item->id) . '">
                             Edit
                         </a>
+
+                        <a class="inline-block border border-amber-500 bg-amber-500 text-white rounded-md px-2 py-1 m-1 font-semibold transition duration-500 ease select-none hover:bg-amber-800 focus:outline-none focus:shadow-outline"
+                            href="' . route('dashboard.questionbank.show', $item->id) . '">
+                            Show
+                        </a>
                     ';
                 })
                 ->editColumn('question', function ($item) {
@@ -76,9 +81,9 @@ class QuestionBankController extends Controller
      * @param  \App\Models\QuestionBank  $questionBank
      * @return \Illuminate\Http\Response
      */
-    public function show(QuestionBank $questionBank)
+    public function show(QuestionBank $questionbank)
     {
-        //
+        return view('pages.questionbank.show', compact('questionbank'));
     }
 
     /**
@@ -89,7 +94,7 @@ class QuestionBankController extends Controller
      */
     public function edit(QuestionBank $questionBank)
     {
-        //
+        return "edit";
     }
 
     /**

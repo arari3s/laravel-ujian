@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->bigInteger('question_banks_id');
-            $table->string('answer');
+            $table->text('answer');
             $table->bigInteger('is_checked')->default(0);
 
             $table->softDeletes();

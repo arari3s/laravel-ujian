@@ -17,7 +17,7 @@ class QuestionBank extends Model
     // relationships one to many question bank to answer
     public function answer()
     {
-        return $this->hasMany(Answer::class, 'question_banks_id');
+        return $this->hasMany(Answer::class, 'question_banks_id', 'id');
     }
 
     public function user()

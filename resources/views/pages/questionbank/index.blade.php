@@ -30,7 +30,7 @@
                         name: 'action',
                         orderable: false,
                         searchable: false,
-                        width: '5%'
+                        width: '15%'
                     }
                 ]
             })
