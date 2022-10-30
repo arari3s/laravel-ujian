@@ -24,22 +24,21 @@ class QuestionBankController extends Controller
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
-                        <a class="inline-block border border-sky-500 bg-sky-500 text-white rounded-md px-4 py-1 m-1 font-semibold transition duration-500 ease select-none hover:bg-sky-800 focus:outline-none focus:shadow-outline"
-                            href="' . route('dashboard.questionbank.edit', $item->id) . '">
-                            Edit
-                        </a>
-
                         <a class="inline-block border border-amber-500 bg-amber-500 text-white rounded-md px-2 py-1 m-1 font-semibold transition duration-500 ease select-none hover:bg-amber-800 focus:outline-none focus:shadow-outline"
                             href="' . route('dashboard.questionbank.show', $item->id) . '">
                             Show
                         </a>
+
+                        <form class="inline-block" action="' . route('dashboard.questionbank.destroy', $item->id) . '" method="POST">
+                            <button class="border border-rose-500 bg-rose-500 text-white rounded-md px-2 py-1 font-semibold transition duration-500 ease select-none hover:bg-rose-800 focus:outline-none focus:shadow-outline" >
+                                Hapus
+                            </button>
+                            ' . method_field('delete') . csrf_field() . '
+                        </form>
                     ';
                 })
-                ->editColumn('question', function ($item) {
-                    return strip_tags($item->question);
-                })
 
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'question'])
                 ->make();
         }
         return view('pages.questionbank.index');
@@ -92,9 +91,9 @@ class QuestionBankController extends Controller
      * @param  \App\Models\QuestionBank  $questionBank
      * @return \Illuminate\Http\Response
      */
-    public function edit(QuestionBank $questionBank)
+    public function edit(QuestionBank $questionbank)
     {
-        return "edit";
+        return abort(404);
     }
 
     /**
@@ -104,9 +103,9 @@ class QuestionBankController extends Controller
      * @param  \App\Models\QuestionBank  $questionBank
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, QuestionBank $questionBank)
+    public function update(QuestionBankRequest $request, QuestionBank $questionbank)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -115,8 +114,13 @@ class QuestionBankController extends Controller
      * @param  \App\Models\QuestionBank  $questionBank
      * @return \Illuminate\Http\Response
      */
-    public function destroy(QuestionBank $questionBank)
+    public function destroy(QuestionBank $questionbank)
     {
-        return abort(404);
+        $questionbank->delete();
+
+        // alert
+        alert()->success('Successfully Delete', 'Question bank data deleted successfully!');
+
+        return redirect()->route('dashboard.questionbank.index');
     }
 }

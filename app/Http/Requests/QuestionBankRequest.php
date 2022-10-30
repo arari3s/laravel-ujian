@@ -25,7 +25,9 @@ class QuestionBankRequest extends FormRequest
     public function rules()
     {
         return [
-            'question' => 'required'
+            'question' => 'required',
+            'answers.*.answer' => 'required',
+            'answers.*.is_checked' => 'present'
         ];
     }
 }

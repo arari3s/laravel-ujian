@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuestionBankController;
+use App\Http\Controllers\Trash\QuestionBankTrashController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,5 +36,9 @@ Route::middleware(['auth:sanctum', 'verified'])
             Route::resource('courses', CourseController::class);
             // question bank
             Route::resource('questionbank', QuestionBankController::class);
+
+            // trash questinbank
+            Route::get('trash-questionbank', [QuestionBankTrashController::class, 'trashquestinbank'])->name('trash-questionbank.index');
+            Route::get('trash-questionbank/restore/{id}', [QuestionBankTrashController::class, 'trashquestinbankrestore'])->name('trash-questionbank.restore');
         });
     });
