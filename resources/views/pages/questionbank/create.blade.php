@@ -34,7 +34,7 @@
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Soal
                                 <span class="text-red-500">*</span></label>
-                            <textarea name="question" nput type="text" name="question" value="{{ old('question') }}"
+                            <textarea name="question" type="text" name="question" value="{{ old('question') }}"
                                 class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 cols="30" rows="10">
                             </textarea>
@@ -174,12 +174,53 @@
 
     <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('question');
-        CKEDITOR.replace('answers[0][answer]');
-        CKEDITOR.replace('answers[1][answer]');
-        CKEDITOR.replace('answers[2][answer]');
-        CKEDITOR.replace('answers[3][answer]');
-        CKEDITOR.replace('answers[4][answer]');
+        CKEDITOR.replace('question', {
+            filebrowserUploadUrl: "{{ route('dashboard.questionbank.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+
+        CKEDITOR.replace('answers[0][answer]', {
+            filebrowserUploadUrl: "{{ route('dashboard.questionbank.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+
+        CKEDITOR.replace('answers[1][answer]', {
+            filebrowserUploadUrl: "{{ route('dashboard.questionbank.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+
+        CKEDITOR.replace('answers[2][answer]', {
+            filebrowserUploadUrl: "{{ route('dashboard.questionbank.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+
+        CKEDITOR.replace('answers[3][answer]', {
+            filebrowserUploadUrl: "{{ route('dashboard.questionbank.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+
+        CKEDITOR.replace('answers[4][answer]', {
+            filebrowserUploadUrl: "{{ route('dashboard.questionbank.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+
+        $(document).ready(function() {
+            $('body').on('submit', '#submitform', function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    data: new FormData(this),
+                    type: POST,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(data) {
+                        alert(data.msg);
+                    }
+                })
+            });
+        })
     </script>
 
 </x-app-layout>
