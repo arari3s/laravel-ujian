@@ -36,6 +36,7 @@ Route::middleware(['auth:sanctum', 'verified'])
             Route::resource('courses', CourseController::class);
             // question bank
             Route::resource('questionbank', QuestionBankController::class);
+            Route::post('questionbank/upload', [QuestionBankController::class, 'questionUploadImage'])->name('questionbank.upload');
 
             // trash questinbank
             Route::get('trash-questionbank', [QuestionBankTrashController::class, 'trashquestinbank'])->name('trash-questionbank.index');
