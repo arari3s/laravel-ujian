@@ -65,6 +65,8 @@ class QuestionBankController extends Controller
         $data = $request->all();
         $data['users_id'] = Auth::user()->id;
 
+        // dd($data);
+
         // add to questionBank
         $questionbank = QuestionBank::create($data);
 
@@ -122,5 +124,34 @@ class QuestionBankController extends Controller
         alert()->success('Successfully Delete', 'Question bank data deleted successfully!');
 
         return redirect()->route('dashboard.questionbank.index');
+    }
+
+    public function questionUploadImage(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            //get filename with extension
+            $originName = $request->file('upload')->getClientOriginalName();
+
+            //get filename without extension
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+
+            //get file extension
+            $extension = $request->file('upload')->getClientOriginalExtension();
+
+            //filename to store
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+
+            //Upload File
+            $request->file('upload')->move(public_path('storage/images'), $fileName);
+
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('images/' . $fileName);
+            $msg = 'Image uploaded successfully';
+            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+            // Render HTML output
+            @header('Content-type: text/html; charset=utf-8');
+            echo $response;
+        }
     }
 }
