@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuestionBankController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\Trash\QuestionBankTrashController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,8 @@ Route::middleware(['auth:sanctum', 'verified'])
             // question bank
             Route::resource('questionbank', QuestionBankController::class);
             Route::post('questionbank/upload', [QuestionBankController::class, 'questionUploadImage'])->name('questionbank.upload');
+            // question
+            Route::resource('courses.question', QuestionController::class)->shallow();
 
             // trash questinbank
             Route::get('trash-questionbank', [QuestionBankTrashController::class, 'trashquestinbank'])->name('trash-questionbank.index');
