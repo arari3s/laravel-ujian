@@ -58,6 +58,10 @@
                             </x-slot>
 
                             <x-slot name="content">
+                                <x-jet-dropdown-link href="{{ route('dashboard.trash-user.index') }}">
+                                    {{ __('User') }}
+                                </x-jet-dropdown-link>
+
                                 <x-jet-dropdown-link href="{{ route('dashboard.trash-questionbank.index') }}">
                                     {{ __('Question Bank') }}
                                 </x-jet-dropdown-link>
