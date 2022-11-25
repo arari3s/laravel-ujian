@@ -13,10 +13,13 @@
                     url: '{!! url()->current() !!}'
                 },
                 columns: [{
-                        data: 'id',
-                        name: 'id',
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false,
                         width: '5%'
                     },
+
                     {
                         data: 'name',
                         name: 'name'
@@ -34,7 +37,7 @@
                         name: 'action',
                         orderable: false,
                         searchable: false,
-                        width: '20%'
+                        width: '15%'
                     }
                 ]
             })
@@ -50,6 +53,13 @@
                     Import User
                 </a>
             </div> --}}
+
+            <div class="mb-10">
+                <a href="{{ route('dashboard.user.create') }}"
+                    class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg">
+                    Create User
+                </a>
+            </div>
 
             <div class="shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 bg-white sm:p-6">

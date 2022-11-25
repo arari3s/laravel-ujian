@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -35,6 +36,7 @@ class UserController extends Controller
                         </form>
                     ';
                 })
+                ->addIndexColumn()
                 ->rawColumns(['action'])
                 ->make();
         }
@@ -48,7 +50,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.user.create');
     }
 
     /**
@@ -57,9 +59,17 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+
+        User::create($data);
+
+        // alert
+        alert()->success('Successfully Added', 'User added successfully!');
+
+        return redirect()->route('dashboard.user.index');
     }
 
     /**
@@ -70,7 +80,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -79,9 +89,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('pages.user.edit', compact('user'));
     }
 
     /**
@@ -91,9 +101,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $data = $request->all();
+
+        // conditional password
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        } else {
+            unset($data['password']);
+        }
+
+        $user->update($data);
+
+        // alert
+        alert()->success('Successfully Updated', 'User updated successfully!');
+
+        return redirect()->route('dashboard.user.index');
     }
 
     /**
@@ -102,8 +126,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        // alert
+        alert()->success('Successfully Delete', 'User data deleted successfully!');
+
+        return redirect()->route('dashboard.user.index');
     }
 }

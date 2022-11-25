@@ -26,6 +26,7 @@ class UserTrashController extends Controller
                 ->editColumn('deleted_at', function ($item) {
                     return date_format($item->deleted_at, 'Y/m/d H:i');
                 })
+                ->addIndexColumn()
                 ->rawColumns(['action'])
                 ->make();
         }

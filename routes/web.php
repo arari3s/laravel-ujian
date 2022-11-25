@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppUserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuestionBankController;
@@ -49,5 +50,8 @@ Route::middleware(['auth:sanctum', 'verified'])
             // trash user
             Route::get('trash-user', [UserTrashController::class, 'trashuser'])->name('trash-user.index');
             Route::get('trash-user/restore/{id}', [UserTrashController::class, 'trashuserrestore'])->name('trash-user.restore');
+
+            // start quiz
+            Route::get('startQuiz', [AppUserController::class, 'startQuiz'])->name('startQuiz');
         });
     });

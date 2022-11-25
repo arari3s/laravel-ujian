@@ -23,6 +23,7 @@ class QuestionBankTrashController extends Controller
                         </a>
                     ';
                 })
+                ->addIndexColumn()
                 ->rawColumns(['action', 'question'])
                 ->make();
         }

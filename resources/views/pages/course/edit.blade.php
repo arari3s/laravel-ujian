@@ -52,8 +52,22 @@
 
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Published
+                                <span class="text-red-500">*</span></label>
+                            <select name="is_active"
+                                class="appearance-none block w-full lg:w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="{{ $course->is_active }}">Tidak diganti</option>
+                                <option disabled>--- Pilih Published ---</option>
+                                <option value="1">YA</option>
+                                <option value="0">TIDAK</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3 py-6">
                             <button type="submit"
-                                class="bg-teal-500 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded shadow-lg">Simpan</button>
+                                class="bg-teal-500 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded shadow-lg">Perbarui</button>
 
                             <a href="{{ route('dashboard.courses.index') }}"
                                 class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 ml-3 rounded shadow-lg">

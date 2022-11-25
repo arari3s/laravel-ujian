@@ -18,11 +18,16 @@ class CourseController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = Course::query();
+            $query = Course::where('users_id', Auth::user()->id);
 
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
+                        <a class="inline-block border border-amber-500 bg-amber-500 text-white rounded-md px-4 py-1 m-1 font-semibold transition duration-500 ease select-none hover:bg-amber-800 focus:outline-none focus:shadow-outline"
+                            href="' . route('dashboard.courses.question.index', $item->id) . '">
+                            Add
+                        </a>
+
                         <a class="inline-block border border-sky-500 bg-sky-500 text-white rounded-md px-4 py-1 m-1 font-semibold transition duration-500 ease select-none hover:bg-sky-800 focus:outline-none focus:shadow-outline"
                             href="' . route('dashboard.courses.edit', $item->id) . '">
                             Edit
@@ -30,12 +35,16 @@ class CourseController extends Controller
 
                         <form class="inline-block" action="' . route('dashboard.courses.destroy', $item->id) . '" method="POST">
                             <button class="border border-red-500 bg-red-500 text-white rounded-md px-2 py-1 m-1 font-semibold transition duration-500 ease select-none hover:bg-red-800 focus:outline-none focus:shadow-outline" >
-                                Hapus
+                                Delete
                             </button>
                             ' . method_field('delete') . csrf_field() . '
                         </form>
                     ';
                 })
+                ->editColumn('is_active', function ($item) {
+                    return $item->is_active == 1 ? 'Ya' : 'Tidak';
+                })
+                ->addIndexColumn()
                 ->rawColumns(['action'])
                 ->make();
         }
@@ -79,7 +88,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return abort(404);
     }
 
     /**

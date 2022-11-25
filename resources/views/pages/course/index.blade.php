@@ -13,8 +13,10 @@
                     url: '{!! url()->current() !!}'
                 },
                 columns: [{
-                        data: 'id',
-                        name: 'id',
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false,
                         width: '5%'
                     },
                     {
@@ -26,11 +28,15 @@
                         name: 'name'
                     },
                     {
+                        data: 'is_active',
+                        name: 'is_active'
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
                         searchable: false,
-                        width: '20%'
+                        width: '25%'
                     }
                 ]
             })
@@ -55,6 +61,7 @@
                                 <th>ID</th>
                                 <th>Judul</th>
                                 <th>Nama Mapel</th>
+                                <th>Published</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

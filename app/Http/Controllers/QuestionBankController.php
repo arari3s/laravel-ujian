@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\QuestionBankRequest;
-use App\Models\Answer;
 use App\Models\QuestionBank;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +18,7 @@ class QuestionBankController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = QuestionBank::with('user')->get();
+            $query = QuestionBank::with('user')->where('users_id', Auth::user()->id);
 
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
@@ -37,7 +36,7 @@ class QuestionBankController extends Controller
                         </form>
                     ';
                 })
-
+                ->addIndexColumn()
                 ->rawColumns(['action', 'question'])
                 ->make();
         }
@@ -72,6 +71,9 @@ class QuestionBankController extends Controller
 
         // add to answer
         $status = $questionbank->answer()->createMany($data['answers'])->push();
+
+        // alert
+        alert()->success('Successfully Added', 'Question bank added successfully!');
 
         return redirect()->route('dashboard.questionbank.index');
     }

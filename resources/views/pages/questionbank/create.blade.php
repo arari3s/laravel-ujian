@@ -172,7 +172,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+    <script src="{{ url('https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace('question', {
             filebrowserUploadUrl: "{{ route('dashboard.questionbank.upload', ['_token' => csrf_token()]) }}",
